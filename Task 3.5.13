@@ -1,0 +1,3 @@
+y_train_resid = best_model.resid
+y_train_resid.name = "residuals"
+y_train_resid.head()
