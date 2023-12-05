@@ -1,0 +1,2 @@
+best_p = AutoRegResultsWrapper(mae_series)
+best_model = AutoReg(y_train, lags=26).fit()
