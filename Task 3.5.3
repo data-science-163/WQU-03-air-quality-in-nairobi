@@ -1,0 +1,5 @@
+result = dar.aggregate([
+    {"$group":{"_id":"$metadata.site", "count":{"$count":{}}}}
+])
+readings_per_site = list(result)
+readings_per_site
