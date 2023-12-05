@@ -1,0 +1,7 @@
+fig, ax = plt.subplots(figsize=(15, 6))
+plot_acf(best_model.resid, ax=ax)
+plt.xlabel("Lag [Hours]")
+plt.ylabel("Corellation Coefficient")
+plt.title("Dar es Salaam, Training Residuals ACF");
+# Don't delete the code below 👇
+plt.savefig("images/3-5-15.png", dpi=150)
