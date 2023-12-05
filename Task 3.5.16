@@ -1,0 +1,10 @@
+y_pred_wfv = pd.Series()
+history = y_train.copy()
+for i in range(len(y_test)):
+    model = AutoReg(history, lags=26).fit()
+    next_pr = model.forecast()
+    y_pred_wfv = y_pred_wfv.append(next_pr)
+    history = history.append(y_test[next_pr.index])
+y_pred_wfv.name = "prediction"
+y_pred_wfv.index.name = "timestamp"
+y_pred_wfv.head()
