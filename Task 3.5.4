@@ -1,0 +1,20 @@
+def wrangle(collection):
+    
+    # Find all the collection with PM2.5 reading in site 11
+    results = dar.find({"metadata.site":11,"metadata.measurement":"P2"}, projection={"timestamp":1,"P2":1,"_id":0})
+    
+    # Localize the timestamp to Dar-e-Salaam/Africa
+    df = pd.DataFrame(results).set_index('timestamp')
+    df.index = df.index.tz_localize("UTC").tz_convert("Africa/Dar_es_Salaam")
+    
+    # Remove all the readings that are greater then 100.
+    mask_gr = df['P2'] < 100
+    df = df[mask_gr]
+    
+    # Reshape the readings to give only the mean value for each hour.
+    df =df['P2'].resample("1H").mean().fillna(method='ffill')
+    
+    # Return the Series instead of dataframe
+    y = pd.Series(df)
+    
+    return y
