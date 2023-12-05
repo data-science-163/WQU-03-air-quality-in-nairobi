@@ -1,0 +1,8 @@
+# Plot histogram of residuals
+# fig, ax = plt.subplots(figsize=(15,6))
+y_train_resid.plot(kind='hist')
+plt.xlabel("Residuals")
+plt.ylabel("Frequency")
+plt.title("Best Model, Training Residuals");
+# Don't delete the code below 👇
+plt.savefig("images/3-5-14.png", dpi=150)
