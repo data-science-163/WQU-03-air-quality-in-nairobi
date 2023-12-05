@@ -1,0 +1,6 @@
+y_train_mean = y_train.mean()
+y_pred_baseline = [y_train_mean] * len(y_train)
+mae_baseline = mean_absolute_error(y_train, y_pred_baseline)
+
+print("Mean P2 Reading:", y_train_mean)
+print("Baseline MAE:", mae_baseline)
